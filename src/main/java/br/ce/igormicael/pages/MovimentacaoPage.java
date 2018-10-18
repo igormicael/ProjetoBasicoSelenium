@@ -1,6 +1,12 @@
 package br.ce.igormicael.pages;
 
+import static br.ce.igormicael.core.DriverFactory.getDriver;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import br.ce.igormicael.core.BasePage;
 
@@ -41,6 +47,18 @@ public class MovimentacaoPage extends BasePage {
 	
 	public String obterMensagemSucesso() {
 		return obterTexto(By.xpath("//div[@class='alert alert-success']"));
+	}
+	
+	public List<String> obterErros(){
+		List<WebElement> erros = getDriver().findElements(By.xpath("//div[@class='alert alert-danger']//li"));
+		
+		List<String> retorno = new ArrayList<String>();
+		
+		for (WebElement webElement : erros) {
+			retorno.add(webElement.getText());
+		}
+		
+		return retorno;
 	}
 	
 }

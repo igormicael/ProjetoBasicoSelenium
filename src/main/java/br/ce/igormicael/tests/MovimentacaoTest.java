@@ -1,5 +1,8 @@
 package br.ce.igormicael.tests;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -26,6 +29,23 @@ public class MovimentacaoTest extends BaseTest {
 		
 		Assert.assertEquals("Movimentação adicionada com sucesso!", 
 				movimentacaoPage.obterMensagemSucesso());
+	}
+	
+	@Test
+	public void testCamposObrigatorios() {
+		menuPage.acessarTelaInserirMovimentacao();
+		movimentacaoPage.salvar();
+		
+		List<String> erros = movimentacaoPage.obterErros();
+		
+		Assert.assertTrue(erros.containsAll(Arrays.asList(
+				"Data da Movimentação é obrigatório",
+				"Data do pagamento é obrigatório",
+				"Descrição é obrigatório",
+				"Interessado é obrigatório",
+				"Valor é obrigatório",
+				"Valor deve ser um número"
+				)));
 	}
 	
 }
