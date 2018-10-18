@@ -1,6 +1,7 @@
 package br.ce.igormicael.tests;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Assert;
@@ -9,6 +10,7 @@ import org.junit.Test;
 import br.ce.igormicael.core.BaseTest;
 import br.ce.igormicael.pages.MenuPage;
 import br.ce.igormicael.pages.MovimentacaoPage;
+import br.ce.igormicael.utils.DataUtils;
 
 public class MovimentacaoTest extends BaseTest {
 	
@@ -45,6 +47,31 @@ public class MovimentacaoTest extends BaseTest {
 				"Interessado é obrigatório",
 				"Valor é obrigatório",
 				"Valor deve ser um número"
+				)));
+	}
+	
+	@Test
+	public void testInserirMovimentacaoFutura() {
+		
+		menuPage.acessarTelaInserirMovimentacao();
+		
+		Date dataFutura = DataUtils.obterDataComDiferencaDias(5);
+		
+		String obterDataFormatada = DataUtils.obterDataFormatada(dataFutura);
+		
+		movimentacaoPage.setDataMovimentacao(obterDataFormatada);
+		movimentacaoPage.setDataPagamento(obterDataFormatada);
+		movimentacaoPage.setDescricao("Movimentação do Teste");
+		movimentacaoPage.setInteressado("Interessado");
+		movimentacaoPage.setValor("500");
+		movimentacaoPage.setConta("Outra Conta 2");
+		movimentacaoPage.setSituacaoPago();
+		movimentacaoPage.salvar();
+		
+		List<String> erros = movimentacaoPage.obterErros();
+		
+		Assert.assertTrue(erros.containsAll(Arrays.asList(
+				"Data da Movimentação deve ser menor ou igual à data atual"
 				)));
 	}
 	
