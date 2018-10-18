@@ -1,7 +1,5 @@
 package br.ce.igormicael.pages;
 
-import org.openqa.selenium.By;
-
 import br.ce.igormicael.core.BasePage;
 import br.ce.igormicael.core.DriverFactory;
 
@@ -21,7 +19,7 @@ public class LoginPage extends BasePage {
 	}
 	
 	public void entrar() {
-		clicarBotao(By.xpath("//button[.='Entrar']"));
+		cliclarBotaoPorTexto("Entrar");
 	}
 	
 	public void logar(String email, String senha) {
