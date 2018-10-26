@@ -1,5 +1,7 @@
 package br.ce.igormicael.tests;
 
+import static br.ce.igormicael.core.DriverFactory.getDriver;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -19,6 +21,13 @@ public class ResumoTest extends BaseTest{
 		
 		Assert.assertEquals("Movimentação removida com sucesso!", resumoPage.obterMensagemSucesso());
 		
+	}
+	
+	@Test
+	public void testResultadoMensal() {
+		menuPage.acessarTelaResumo();
+		
+		Assert.assertEquals("Seu Barriga - Extrato", getDriver().getTitle());
 	}
 	
 }
