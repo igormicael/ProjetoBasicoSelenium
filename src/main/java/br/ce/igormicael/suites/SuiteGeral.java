@@ -1,18 +1,14 @@
 package br.ce.igormicael.suites;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
-import br.ce.igormicael.core.DriverFactory;
-import br.ce.igormicael.pages.LoginPage;
 import br.ce.igormicael.tests.ContaTest;
 import br.ce.igormicael.tests.MovimentacaoTest;
+import br.ce.igormicael.tests.RemoverMovimentacaoContaTest;
 import br.ce.igormicael.tests.ResumoTest;
 import br.ce.igormicael.tests.SaldoTest;
-import br.ce.igormicael.tests.RemoverMovimentacaoContaTest;
 
 @RunWith(Suite.class)
 @SuiteClasses({
@@ -24,17 +20,5 @@ import br.ce.igormicael.tests.RemoverMovimentacaoContaTest;
 })
 public class SuiteGeral {
 	
-	private static LoginPage page = new LoginPage();
-	
-	@BeforeClass
-	public static void inicializa() {
-		page.acessarTelaInicial();
-		page.logar("igor@gmail.com", "12345");
-	}
-	
-	@AfterClass
-	public static void finaliza(){
-		DriverFactory.killDriver();
-	}
 
 }
