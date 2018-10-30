@@ -10,7 +10,6 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import br.ce.igormicael.core.BaseTest;
-import br.ce.igormicael.core.Propriedades;
 import br.ce.igormicael.pages.MenuPage;
 import br.ce.igormicael.pages.MovimentacaoPage;
 import br.ce.igormicael.utils.DataUtils;
@@ -29,7 +28,7 @@ public class MovimentacaoTest extends BaseTest {
 		movimentacaoPage.setDescricao("Movimentação do Teste");
 		movimentacaoPage.setInteressado("Interessado");
 		movimentacaoPage.setValor("500");
-		movimentacaoPage.setConta(Propriedades.NOME_CONTA_ALTERADA);
+		movimentacaoPage.setConta("Conta para movimentacoes");
 		movimentacaoPage.setSituacaoPago();
 		movimentacaoPage.salvar();
 		
@@ -68,7 +67,7 @@ public class MovimentacaoTest extends BaseTest {
 		movimentacaoPage.setDescricao("Movimentação do Teste");
 		movimentacaoPage.setInteressado("Interessado");
 		movimentacaoPage.setValor("500");
-		movimentacaoPage.setConta(Propriedades.NOME_CONTA_ALTERADA);
+		movimentacaoPage.setConta("Conta para movimentacoes");
 		movimentacaoPage.setSituacaoPago();
 		movimentacaoPage.salvar();
 		

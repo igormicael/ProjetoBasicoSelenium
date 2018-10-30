@@ -7,7 +7,6 @@ public class LoginPage extends BasePage {
 	
 	public void acessarTelaInicial() {
 		DriverFactory.getDriver().get("https://seubarriga.wcaquino.me/login");
-		
 	}
 	
 	public void setEmail(String email) {

@@ -25,15 +25,9 @@ public class ResumoTest extends BaseTest{
 	@Test
 	public void test1_testExcluirMovimentacao() {
 		menuPage.acessarTelaResumo();
-		
-		resumoPage.selecionarCombo("mes", "Setembro");
-		resumoPage.selecionarCombo("ano", "2017");
-		resumoPage.buscar();
-		
 		resumoPage.excluirMovimentacao();
 		
 		Assert.assertEquals("Movimentação removida com sucesso!", resumoPage.obterMensagemSucesso());
-		
 	}
 	
 	@Test
@@ -48,6 +42,9 @@ public class ResumoTest extends BaseTest{
 		menuPage.acessarTelaResumo();
 		
 		Assert.assertEquals("Seu Barriga - Extrato", getDriver().getTitle());
+		
+		resumoPage.selecionarAno("2016");
+		resumoPage.buscar();
 		
 		List<WebElement> elementosEncontrados = 
 				DriverFactory.getDriver().findElements(By.xpath("//*[@id='tabelaExtrato']/tbody/tr"));

@@ -4,7 +4,6 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import br.ce.igormicael.core.BaseTest;
-import br.ce.igormicael.core.Propriedades;
 import br.ce.igormicael.pages.HomePage;
 import br.ce.igormicael.pages.MenuPage;
 
@@ -16,7 +15,7 @@ public class SaldoTest extends BaseTest {
 	@Test
 	public void test() {
 		menu.acessarTelaPrincipal();
-		Assert.assertEquals("500.00", homePage.obterSaldoConta(Propriedades.NOME_CONTA_ALTERADA));
+		Assert.assertEquals("534.00", homePage.obterSaldoConta("Conta para saldo"));
 	}
 
 }
