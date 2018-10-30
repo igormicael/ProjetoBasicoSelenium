@@ -5,16 +5,13 @@ import java.util.Date;
 import java.util.List;
 
 import org.junit.Assert;
-import org.junit.FixMethodOrder;
 import org.junit.Test;
-import org.junit.runners.MethodSorters;
 
 import br.ce.igormicael.core.BaseTest;
 import br.ce.igormicael.pages.MenuPage;
 import br.ce.igormicael.pages.MovimentacaoPage;
 import br.ce.igormicael.utils.DataUtils;
 
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class MovimentacaoTest extends BaseTest {
 	
 	MenuPage menuPage = new MenuPage();
