@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -39,8 +40,11 @@ public class DriverFactory {
 			switch (Propriedades.BROWSER) {
 				case FIREFOX: driver = new FirefoxDriver(); break;
 				case CHROME: driver = new ChromeDriver(); break;
+				case IE: driver = new InternetExplorerDriver(); break;
 			}
-		}else {
+		}
+		
+		if(Propriedades.TIPO_EXECUCAO == TipoExecucao.GRID){
 			DesiredCapabilities cap = null;
 			switch (Propriedades.BROWSER) {
 				case FIREFOX: 
@@ -54,10 +58,30 @@ public class DriverFactory {
 					
 					break;
 				case CHROME: cap=DesiredCapabilities.chrome(); break;
+				case IE: cap=DesiredCapabilities.internetExplorer(); break;
 			}
 			
 			try {
 				driver = new RemoteWebDriver(new URL("http://192.168.25.72:4444/wd/hub"), cap);
+			} catch (MalformedURLException e) {
+				System.out.println("Falha na conexão com o grid");
+			}
+		}
+		
+		if(Propriedades.TIPO_EXECUCAO == TipoExecucao.NUVEM){
+			DesiredCapabilities cap = null;
+			switch (Propriedades.BROWSER) {
+			case FIREFOX: cap=DesiredCapabilities.firefox(); break;
+			case CHROME: cap=DesiredCapabilities.chrome(); break;
+			case IE: cap=DesiredCapabilities.internetExplorer(); 
+			cap.setCapability("platform", "Windows 7");
+			cap.setCapability("version", "11.0");
+			
+			break;
+			}
+			
+			try {
+				driver = new RemoteWebDriver(new URL("http://igor.m.peixoto:e64666bf-647f-4982-bf62-245ba615c75e@ondemand.saucelabs.com:80/wd/hub"), cap);
 			} catch (MalformedURLException e) {
 				System.out.println("Falha na conexão com o grid");
 			}
